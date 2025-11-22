@@ -45,20 +45,21 @@ export class News extends Component {
       <div className="container my-3">
         <h1>News - 360 Headlines</h1>
         <div className="row">
-          <div className="col-md-4">
-            <NewsItem
-              titlle="myTitle"
-              description="myDesc"
-              imageUrl="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg"
-              newsUrl="TODO"
-            />
-          </div>
-          <div className="col-md-4">
-            <NewsItem titlle="myTitle" description="myDesc" />
-          </div>
-          <div className="col-md-4">
-            <NewsItem titlle="myTitle" description="myDesc" />
-          </div>
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-4" key={element.url}>
+                <NewsItem
+                  key={element.url}
+                  title={element.title ? element.title.slice(0, 45) : ""}
+                  description={
+                    element.description ? element.description.slice(0, 88) : ""
+                  }
+                  imageUrl={element.urlToImage}
+                  newsUrl={element.url}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     );
