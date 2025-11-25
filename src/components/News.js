@@ -61,7 +61,7 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        <h1 className="text-center" style={{ marign: "40px 0px;" }}>
+        <h1 className="text-center" style={{ marign: "40px 0px" }}>
           News - 360 Headlines
         </h1>
         {this.state.loading && <Spinner />}
@@ -80,6 +80,9 @@ export class News extends Component {
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    author={element.author ? element.author : "Unknown"}
+                    date={element.publishedAt}
+                    source={element.source.name}
                   />
                 </div>
               );
